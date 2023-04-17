@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.ibp.pusillusgrex'
+    compileSdk 33
+
+    buildFeatures{
+        dataBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.ibp.pusillusgrex"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    def activity_version = "1.7.0"
+    def appcompat_version = "1.6.1"
+    def constraint_version = "2.1.4"
+    def core_version = "1.10.0"
+    def fragment_version = "1.5.6"
+    def lifecycle_version = "2.6.1"
+    def navigation_version = "2.5.3"
+    def room_version = "2.5.1"
+
+    implementation "androidx.activity:activity-ktx:$activity_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.core:core-ktx:$core_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    def version_glide = "4.15.1"
+    def material_version = "1.8.0"
+    def firebase_auth_version = "21.2.0"
+    def firebase_bom_version = "31.5.0"
+    def hilt_version = "2.44"
+    def timber_version = "5.0.1"
+
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+    implementation "com.google.firebase:firebase-auth-ktx:$firebase_auth_version"
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom_version")
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
+
+    def coroutines_version = "1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.mockito:mockito-core:5.2.0"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+kapt {
+    correctErrorTypes true
+}
